@@ -9,6 +9,8 @@ import sys
 import timeit
 from vizdoom import *
 
+#Processing the intermediate layers of CNN. 
+
 def get_input_shape(Image,Filter,Stride):
   layer1 = math.ceil(((Image - Filter + 1) / Stride))
   out1 = math.ceil((layer1 / Stride))
