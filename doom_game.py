@@ -1,5 +1,6 @@
+#for overriding the tensorflow 2.0 syntax with 1.x version
 import tensorflow.compat.v1 as tf
-tf.disable_v2_behavior()
+tf.disable_v2_behavior() 
 import numpy as np
 import matplotlib.pyplot as plt
 from vizdoom import *
