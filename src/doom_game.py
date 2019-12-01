@@ -12,19 +12,19 @@ import sys
 
 
 def get_input_shape(Image,Filter,Stride):
-    layer1 = math.ceil(((Image - Filter + 1) / Stride))
+    layer_one = math.ceil(((Image - Filter + 1) / Stride))
     
-    o1 = math.ceil((layer1 / Stride))
+    output_one = math.ceil((layer_one / Stride))
     
-    layer2 = math.ceil(((o1 - Filter + 1) / Stride))
+    layer_two = math.ceil(((output_one - Filter + 1) / Stride))
     
-    o2 = math.ceil((layer2 / Stride))
+    output_two = math.ceil((layer_two / Stride))
     
-    layer3 = math.ceil(((o2 - Filter + 1) / Stride))
+    layer_three = math.ceil(((output_two - Filter + 1) / Stride))
     
-    o3 = math.ceil((layer3 / Stride))
+    output_three = math.ceil((layer_three / Stride))
     
-    return int(o3)
+    return int(output_three)
 
 
 
