@@ -154,18 +154,18 @@ class DRQN():
 
         # setting up the first convolutional layer
         self.conv1 = tf.nn.conv2d(input = tf.reshape(self.input, shape = (1, self.input_shape[0], self.input_shape[1], self.input_shape[2])), filter = self.features1, strides = [1, self.stride, self.stride, 1], padding = "VALID")
-        self.relu1 = tf.nn.relu(self.conv1)
-        self.pool1 = tf.nn.max_pool(self.relu1, ksize = [1, self.poolsize, self.poolsize, 1], strides = [1, self.stride, self.stride, 1], padding = "SAME")
+        self.elu1 = tf.nn.elu(self.conv1)
+        self.pool1 = tf.nn.max_pool(self.elu1, ksize = [1, self.poolsize, self.poolsize, 1], strides = [1, self.stride, self.stride, 1], padding = "SAME")
 
         # setting up the second convolutional layer
         self.conv2 = tf.nn.conv2d(input = self.pool1, filter = self.features2, strides = [1, self.stride, self.stride, 1], padding = "VALID")
-        self.relu2 = tf.nn.relu(self.conv2)
-        self.pool2 = tf.nn.max_pool(self.relu2, ksize = [1, self.poolsize, self.poolsize, 1], strides = [1, self.stride, self.stride, 1], padding = "SAME")
+        self.elu2 = tf.nn.elu(self.conv2)
+        self.pool2 = tf.nn.max_pool(self.elu2, ksize = [1, self.poolsize, self.poolsize, 1], strides = [1, self.stride, self.stride, 1], padding = "SAME")
 
         # setting up the third convolutional layer
         self.conv3 = tf.nn.conv2d(input = self.pool2, filter = self.features3, strides = [1, self.stride, self.stride, 1], padding = "VALID")
-        self.relu3 = tf.nn.relu(self.conv3)
-        self.pool3 = tf.nn.max_pool(self.relu3, ksize = [1, self.poolsize, self.poolsize, 1], strides = [1, self.stride, self.stride, 1], padding = "SAME")
+        self.elu3 = tf.nn.elu(self.conv3)
+        self.pool3 = tf.nn.max_pool(self.elu3, ksize = [1, self.poolsize, self.poolsize, 1], strides = [1, self.stride, self.stride, 1], padding = "SAME")
 
         # adding the dropout and reshaping the input
         self.drop1 = tf.nn.dropout(self.pool3, self.dropout_probability[0])
